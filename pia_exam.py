@@ -19,13 +19,13 @@ class countText:
             if i != "":
                 if i.lower() in self.compare:
                     self.comparedValues.add(i.lower())
-                    self.countComparedValues = 1
-                self.getWordsOnly = 1
+                    self.countComparedValues += 1
+                self.getWordsOnly += 1
                 for j in i.lower():
                     if j in self.vowels:
-                        self.vowelsOnly = 1
+                        self.vowelsOnly += 1
                     elif j in self.consonant:
-                        self.consonantOnly = 1
+                        self.consonantOnly += 1
 
     def numberOfLines(self):
         return len([1 for i in self.value.split("\n") if i.replace(" ", "") != ""])
@@ -73,11 +73,11 @@ class MainClass:
 
     def main(self):
         # Check the folder if filipino or not
-
+        
         searched = {
             "-e": {
                 "searchedPath": "languageAndWords/englishWords.txt",
-                "searchedVowel": "aeiou",
+                "searchedVowel": "a e i o u".split(" "),
                 "searchedConsonants": "b c d f g h j k l m n p q r s t v w x y z".split(" ")
             },
             "-f": {
@@ -105,11 +105,11 @@ class MainClass:
         if self.values[0] in "-e":
             result = "\n".join(
                 [
-                    f"number of lines:{text.numberOfLines()}",
-                    f"number of words:{text.numberOfWords()} ",
-                    f"number of vowels:{text.numberOfVowels()}",
+                    f"number of lines: {text.numberOfLines()}",
+                    f"number of words: {text.numberOfWords()} ",
+                    f"number of vowels: {text.numberOfVowels()}",
                     f"number of consonant: {text.numberOfConstants()} ",
-                    f"number of English Words:{text.numberOfComparedValues()} ",
+                    f"number of English Words: {text.numberOfComparedValues()} ",
                     f"\nEnglish Words used:\n{  allWords }",
                 ]
             )
@@ -117,9 +117,9 @@ class MainClass:
         if self.values[0] in "-f":
             result = "\n".join(
                 [
-                    f"Blg. ng hanay:{text.numberOfLines()}",
-                    f"Blg ng Salita:{text.numberOfWords()} ",
-                    f"Blg ng Patinig:{text.numberOfVowels()}",
+                    f"Blg. ng hanay: {text.numberOfLines()}",
+                    f"Blg ng Salita: {text.numberOfWords()} ",
+                    f"Blg ng Patinig: {text.numberOfVowels()}",
                     f"Blg ng Katinig: {text.numberOfConstants()} ",
                     f"Ginamit na Salitang Pilipino:{text.numberOfComparedValues()} ",
                     f"\nEnglish Words used:\n{  allWords }",
